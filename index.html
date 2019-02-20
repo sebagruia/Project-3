@@ -6,18 +6,34 @@
     <title>Effective JavaScript: Frogger</title>
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     
 </head>
 <body>
     <div id="score" >
     <ul id="score-table1">
         <li><h4>Survived:</h4></li>
-        <li class="survived_counter">0</li>
+        <li class="survived_counter"><h4>0</h4></li>
     </ul>
     <ul id="score-table2">
         <li><h4>Eaten Alive:</h4></li>
-        <li class="dead_counter"><h4>0</h4></li>
+        <li class="eatenalive_counter"><h4>0</h4></li>
     </ul>
+    </div>
+    <div class="hero_select_box">
+            
+    <ul id="hero-library">
+        <li class="image"><i class="fas fa-caret-left"> </i></li>
+        <li class="char-boy image hero hidden"><img src="images/char-boy.png"></li>
+        <li class="char-cat-girl hero image hidden"><img src="images/char-cat-girl.png"></li>
+        <li class="char-horn-girl hero image "><img src="images/char-horn-girl.png"></li>
+        <li class="char-pink-gir hero image hidden"><img src="images/char-pink-girl.png"></li>
+        <li class="char-princess-girl image hidden"><img src="images/char-princess-girl.png"></li>
+        <li class="image"><i class="fas fa-caret-right"></i></li>
+    </ul>
+        <h4>Select your HERO</h4>
+        
+
     </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>

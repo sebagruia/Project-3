@@ -13,7 +13,7 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
     }
 
-    
+
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
     update(dt) {
@@ -55,19 +55,22 @@ class Player {
         this.sprite = 'images/char-horn-girl.png';
     }
 
-    
-    update(dt) {
-        
-            for (const enemy of allEnemies) {
-                if (enemy.x == this.x && enemy.y == this.y) {
-                    this.x = 202;
-                    this.y = 404;
-                }
-                console.log(enemy.x, this.x);
-            }
-        
 
-     }
+    update(dt) {
+const eatenAlive = document.querySelector('.eatenalive_counter');
+        
+        for (const enemy of allEnemies) {
+            if (this.x < (enemy.x + 50) && (this.x + 50) > enemy.x && this.y < (enemy.y + 40) && (this.y + 40) > enemy.y) {
+                this.y = 404;
+                this.x = 202;
+                eatenAliveNumbr++;
+                eatenAlive.innerHTML = `${eatenAliveNumbr}`;
+               }
+            
+        }
+
+
+    }
 
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -76,13 +79,10 @@ class Player {
 
     countingVictory() {
         const surviveCount = document.querySelector('.survived_counter');
-        console.log(surviveCount);
-        if (this.y <= 83) {
-            number++;
-            console.log(number);
-            surviveCount.innerHTML = `${number}`;
-        }
-
+        victoryNumber++;
+        surviveCount.innerHTML = `${victoryNumber}`;
+        this.x = 202;
+        this.y = 404;
     }
 
 
@@ -105,9 +105,8 @@ class Player {
                 };
                 break;
             case 'up':
-                if (this.y <= 83) {
-                    this.x = 202;
-                    this.y = 404;
+                if (this.y <= 72) {
+                    this.countingVictory();
 
                 } else {
                     this.y -= 83;
@@ -131,21 +130,23 @@ class Player {
 // Place the player object in a variable called player
 const allEnemies = [];
 const speeds = [150, 200, 450];
-let number = 0;
+let victoryNumber = 0;
+let eatenAliveNumbr = 0;
 let randomSpeedGenerator = function (array) {
     const randomNumber = Math.floor((Math.random() * array.length) + 1);
-    return array[randomNumber];
+    return array[randomNumber - 1];
 };
 
 
 
 const player = new Player();
 const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds));
-const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds));
-const enemy3 = new Enemy(202, 220, randomSpeedGenerator(speeds));
-const enemy4 = new Enemy(202, 220, randomSpeedGenerator(speeds));
-const enemy5 = new Enemy(101, 140, randomSpeedGenerator(speeds));
-allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5);
+const enemy2 = new Enemy(101, 140, randomSpeedGenerator(speeds));
+const enemy3 = new Enemy(101, 220, randomSpeedGenerator(speeds));
+const enemy4 = new Enemy(0, 220, randomSpeedGenerator(speeds));
+allEnemies.push(enemy1, enemy2, enemy3, enemy4);
+
+
 
 
 
@@ -162,6 +163,7 @@ document.addEventListener('keyup', function (e) {
         40: 'down'
     };
     player.handleInput(allowedKeys[e.keyCode]);
-    player.countingVictory();
-    
+    //    player.countingVictory();
+
+
 });

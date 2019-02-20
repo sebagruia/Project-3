@@ -27,3 +27,55 @@ body {
 
 
 }
+.hero_select_box{
+   width: 505px; 
+    margin:0 auto;
+    text-align:center;
+    z-index: 9999;
+    position:absolute;
+    left: 33.5%;
+/*    top: 75.6%;*/
+        top: 65%;
+}
+
+#hero-library .image{
+    list-style:none;
+    display:inline-block;
+}
+#hero-library .image .fas{
+    font-size:40px;
+    color:#0b669f;
+    animation: mymove 1s infinite;
+    -webkit-animation: mymove 1s infinite;
+}
+.hidden{
+    display:none!important;
+}
+
+.left, 
+.right {
+    display:inline-block;
+}
+
+.left{
+    margin-left:10%;
+}
+
+.hero_select_box h4{
+        margin-left: 38px;
+}
+
+
+/*KEYFRAMES*/
+
+@-webkit-keyframes mymove{
+ from{ transform: scaleX(2,3);}
+to{ transform: scaleX(1,1);}
+   
+}
+
+
+@keyframes mymove{
+    from{ transform: scale(0,0);}
+    to{ transform: scale(0.8,0.8);}
+}
