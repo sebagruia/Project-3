@@ -43,8 +43,10 @@ body {
     display:inline-block;
 }
 #hero-library .image .fas{
-    font-size:40px;
+    font-size:60px;
+    padding:20px;
     color:#0b669f;
+    cursor:pointer;
     animation: mymove 1s infinite;
     -webkit-animation: mymove 1s infinite;
 }
@@ -63,19 +65,21 @@ body {
 
 .hero_select_box h4{
         margin-left: 38px;
+        cursor:pointer;
+    padding:0px;
 }
 
 
 /*KEYFRAMES*/
 
 @-webkit-keyframes mymove{
- from{ transform: scaleX(2,3);}
-to{ transform: scaleX(1,1);}
+ from{ transform: scaleX(0,0);}
+to{ transform: scaleX(0.8,0.8);}
    
 }
 
 
 @keyframes mymove{
-    from{ transform: scale(0,0);}
+    from{ transform: scale(0.5,0.5);}
     to{ transform: scale(0.8,0.8);}
 }
