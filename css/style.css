@@ -42,7 +42,7 @@ body {
     list-style:none;
     display:inline-block;
 }
-#hero-library .image .fas{
+#hero-library .image fas{
     font-size:60px;
     padding:20px;
     color:#0b669f;
