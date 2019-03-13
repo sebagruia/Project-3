@@ -1,5 +1,5 @@
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', sans-serif !important;
     text-align: center;
     box-sizing: border-box;
 }
@@ -13,7 +13,7 @@ body {
 #score-table2 {
     list-style: none;
     display: inline;
-    
+
 }
 
 #score-table1 li,
@@ -27,59 +27,73 @@ body {
 
 
 }
-.hero_select_box{
-   width: 505px; 
-    margin:0 auto;
-    text-align:center;
+
+.hero_select_box {
+    display:none;
+    width: 505px;
+    margin: 0 auto;
+    text-align: center;
     z-index: 9999;
-    position:absolute;
+    position: absolute;
     left: 33.5%;
-/*    top: 75.6%;*/
-        top: 65%;
+    /*    top: 75.6%;*/
+    top: 65%;
 }
 
-#hero-library .image{
-    list-style:none;
-    display:inline-block;
+#hero-library .image {
+    list-style: none;
+    display: inline-block;
 }
-#hero-library .image fas{
-    font-size:60px;
-    padding:20px;
-    color:#0b669f;
-    cursor:pointer;
+
+#hero-library .image .fas {
+    font-size: 60px;
+    padding: 20px;
+    color: #0b669f;
+    cursor: pointer;
     animation: mymove 1s infinite;
     -webkit-animation: mymove 1s infinite;
 }
-.hidden{
-    display:none!important;
+
+.hidden {
+    display: none !important;
 }
 
-.left, 
+.left,
 .right {
-    display:inline-block;
+    display: inline-block;
 }
 
-.left{
-    margin-left:10%;
+.left {
+    margin-left: 10%;
 }
 
-.hero_select_box h4{
-        margin-left: 38px;
-        cursor:pointer;
-    padding:0px;
+.hero_select_box h4 {
+    margin-left: 38px;
+    cursor: pointer;
+    padding: 0px;
 }
 
 
 /*KEYFRAMES*/
 
-@-webkit-keyframes mymove{
- from{ transform: scaleX(0,0);}
-to{ transform: scaleX(0.8,0.8);}
-   
+@-webkit-keyframes mymove {
+    from {
+        transform: scaleX(0, 0);
+    }
+
+    to {
+        transform: scaleX(0.8, 0.8);
+    }
+
 }
 
 
-@keyframes mymove{
-    from{ transform: scale(0.5,0.5);}
-    to{ transform: scale(0.8,0.8);}
+@keyframes mymove {
+    from {
+        transform: scale(0.5, 0.5);
+    }
+
+    to {
+        transform: scale(0.8, 0.8);
+    }
 }
