@@ -9,7 +9,9 @@ class Enemy {
         this.speed = speed;
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
-        this.sprite = 'images/enemy-bug.png';
+        //        this.sprite = 'images/enemy-bug.png';
+        this.sprite = ['images/enemy-bug.png', ];
+
     }
 
 
@@ -53,8 +55,11 @@ class Player {
     constructor([x = 202, y = 404] = []) {
         this.x = x;
         this.y = y;
-        this.sprite = 'images/char-horn-girl.png';
-
+        this.sprite = ['images/char-boy.png',
+                        'images/char-horn-girl.png',
+                        'images/char-cat-girl.png',
+                        'images/char-pink-girl.png',
+                        'images/char-princess-girl.png'];
     }
 
 
@@ -71,15 +76,15 @@ class Player {
 
         }
     }
- 
-    
+
+
     render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        ctx.drawImage(Resources.get(this.sprite[2]), this.x, this.y);
 
     }
 
-    
-//This deals with counting the Hero wins *****************
+
+    //This deals with counting the Hero wins *****************
     countingVictory() {
         const surviveCount = document.querySelector('.survived_counter');
         victoryNumber++;
@@ -88,7 +93,7 @@ class Player {
         this.y = 404;
     }
 
-//This deals with the movement of the Hero *****************
+    //This deals with the movement of the Hero *****************
     handleInput(direction) {
 
         switch (direction) {
@@ -124,42 +129,39 @@ class Player {
                 break;
         }
     }
-    
-//This function selects different Heros *****************
+
+    //This function selects different Heros *****************
     selectHero() {
-        const heroArray = document.getElementsByClassName('image-hero');
+//        const heroArray = document.getElementsByClassName('image-hero');
+        const heroArray = document.querySelector('.image-hero');
         const moveLeft = document.querySelector('.fa-caret-left');
         const moveRight = document.querySelector('.fa-caret-right');
         const selector = document.getElementById('selector');
         const heroLibrarySelector = document.getElementById('hero-library');
         const selectH4Text = document.getElementById('selector');
         let i = heroArray.length - 1;
+        let j = 2;
 
-        moveLeft.addEventListener('click', (ev1)=> {
-            if (!heroArray[i].classList.contains('hidden') && i >= 1) {
-                heroArray[i].classList.add('hidden');
-                heroArray[i - 1].classList.remove('hidden');
-                i--;
-            }
-
+            moveLeft.addEventListener('click', (ev1) => {
+                if(j>0){
+                    heroArray.innerHTML = `<img src="${this.sprite[j-1]}">`;
+                    j--;
+                   }
         });
 
-        
-        moveRight.addEventListener('click',  (ev2) => {
-            if (!heroArray[i].classList.contains('hidden') && i <= 3) {
-                heroArray[i].classList.add('hidden');
-                heroArray[i + 1].classList.remove('hidden');
-                i++;
-            }
 
+           moveRight.addEventListener('click', (ev2) => {
+            if(j<=3){
+                    heroArray.innerHTML = `<img src="${this.sprite[j+1]}">`;
+                    j++;
+                   }
         });
 
         // This event should set a new Hero, but unfortunately is not working
         selector.addEventListener('click', (ev) => {
             heroLibrarySelector.classList.add('hidden');
             selectH4Text.classList.add('hidden');
-//         this.sprite = heroArray[i].innerHTML; //I CAN'T SET THE "this.sprite" TO ANOTHER URL OTHER THAN THE ONE THAT IS SET BY CONSTRUCTOR METHOD
-                                                    //IF YOU CAN GIVE ME A HELPING HAND HERE I WOULD MUCH APPRECIATE 
+            this.sprite = heroArray[i].innerHTML;
 
         });
 
