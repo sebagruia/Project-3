@@ -21,7 +21,9 @@
 * If you are hit by your enemy, you will die and will be repositioned at the starting position, your death will be recorded by the "Eaten Alive" counter;
 * If you want to start fresh, resetting the counters and choosing a different Hero, you must refresh your browser.
 
+## Web Link
 
+[Link to the  GitHub Page](https://sebagruia.github.io/Project-3/)
 
 
 
