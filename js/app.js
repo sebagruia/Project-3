@@ -132,19 +132,17 @@ class Player {
 
     //This function selects different Heros *****************
     selectHero() {
-//        const heroArray = document.getElementsByClassName('image-hero');
-        const heroArray = document.querySelector('.image-hero');
+        const imageHero = document.querySelector('.image-hero');
         const moveLeft = document.querySelector('.fa-caret-left');
         const moveRight = document.querySelector('.fa-caret-right');
         const selector = document.getElementById('selector');
-        const heroLibrarySelector = document.getElementById('hero-library');
+        const heroSelectBox = document.querySelector('.hero_select_box');
         const selectH4Text = document.getElementById('selector');
-        let i = heroArray.length - 1;
         let j = 2;
 
             moveLeft.addEventListener('click', (ev1) => {
                 if(j>0){
-                    heroArray.innerHTML = `<img src="${this.sprite[j-1]}">`;
+                    imageHero.innerHTML = `<img src="${this.sprite[j-1]}">`;
                     j--;
                    }
         });
@@ -152,17 +150,15 @@ class Player {
 
            moveRight.addEventListener('click', (ev2) => {
             if(j<=3){
-                    heroArray.innerHTML = `<img src="${this.sprite[j+1]}">`;
+                    imageHero.innerHTML = `<img src="${this.sprite[j+1]}">`;
                     j++;
                    }
         });
 
         // This event should set a new Hero, but unfortunately is not working
         selector.addEventListener('click', (ev) => {
-            heroLibrarySelector.classList.add('hidden');
+            heroSelectBox.classList.add('hidden');
             selectH4Text.classList.add('hidden');
-            this.sprite = heroArray[i].innerHTML;
-
         });
 
     }
