@@ -138,6 +138,7 @@ class Player {
         const selector = document.getElementById('selector');
         const heroSelectBox = document.querySelector('.hero_select_box');
         const selectH4Text = document.getElementById('selector');
+        const canvas = document.getElementsByTagName('canvas');
         let j = 2;
 
             moveLeft.addEventListener('click', (ev1) => {
@@ -157,6 +158,7 @@ class Player {
 
         // This event should set a new Hero, but unfortunately is not working
         selector.addEventListener('click', (ev) => {
+            canvas[0].classList.add('reveal');
             heroSelectBox.classList.add('hidden');
             selectH4Text.classList.add('hidden');
         });
