@@ -129,19 +129,22 @@ class Player {
                 break;
         }
     }
+}
 
-    //This function selects different Heros *****************
-    selectHero() {
+
+//This function selects different Heros *****************
+    selectHero = () => {
         const imageHero = document.querySelector('.image-hero');
-        const moveLeft = document.querySelector('.fa-caret-left');
-        const moveRight = document.querySelector('.fa-caret-right');
+        const selectLeft = document.querySelector('.fa-caret-left');
+        const selectRight = document.querySelector('.fa-caret-right');
         const selector = document.getElementById('selector');
         const heroSelectBox = document.querySelector('.hero_select_box');
         const selectH4Text = document.getElementById('selector');
         const canvas = document.getElementsByTagName('canvas');
+        const score = document.getElementById('score');
         let j = 2;
 
-            moveLeft.addEventListener('click', (ev1) => {
+            selectLeft.addEventListener('click', (ev1) => {
                 if(j>0){
                     imageHero.innerHTML = `<img src="${this.sprite[j-1]}">`;
                     j--;
@@ -149,24 +152,22 @@ class Player {
         });
 
 
-           moveRight.addEventListener('click', (ev2) => {
+           selectRight.addEventListener('click', (ev2) => {
             if(j<=3){
                     imageHero.innerHTML = `<img src="${this.sprite[j+1]}">`;
                     j++;
                    }
         });
 
-        // This event should set a new Hero, but unfortunately is not working
         selector.addEventListener('click', (ev) => {
-            canvas[0].classList.add('reveal');
             heroSelectBox.classList.add('hidden');
             selectH4Text.classList.add('hidden');
+            score.classList.add('visible');
+            canvas[0].classList.add('reveal');
+
         });
 
     }
-
-}
-
 
 
 // Now instantiate your objects.
@@ -191,7 +192,7 @@ allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-player.selectHero();
+selectHero();
 document.addEventListener('keyup', (e) => {
     //    console.log(e);
     var allowedKeys = {
