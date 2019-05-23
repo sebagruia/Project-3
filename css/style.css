@@ -76,6 +76,12 @@ body {
     padding: 0px;
 }
 
+/*
+  canvas{
+        width:202px;
+        height:303px;
+    }
+*/
 
 /*KEYFRAMES*/
 
@@ -105,11 +111,5 @@ body {
     }
 }
 
-@media screen and (max-width:450px){
-    canvas{
-        width:202px;
-        height:303px;
-    }
+  
     
-    
-}
