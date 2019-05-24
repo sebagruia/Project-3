@@ -116,6 +116,7 @@ canvas {
 
 /*MEDIA QUERIES*/
 
+
 @media screen and (max-width:320px) {
     canvas {
         -webkit-transform: scale(0.6, 0.6);
@@ -127,6 +128,7 @@ canvas {
 
     }
 
+    
     .hero_select_box {
         width: 200px;
         height: 340px;
@@ -155,6 +157,11 @@ canvas {
 
     }
 
+    #score {
+        -webkit-transform: scale(0.9, 0.9);
+        transform: scale(0.9, 0.9);
+    }
+
     .hero_select_box {
         width: 200px;
         height: 340px;
@@ -178,6 +185,8 @@ canvas {
         left: -44px;
         top: -15px;
     }
+    
+
 
 }
 
@@ -188,6 +197,7 @@ canvas {
         left: -14px;
         top: -15px;
     }
+  
 
 }
 
@@ -198,6 +208,7 @@ canvas {
         left: 15px;
 
     }
+ 
 
 }
 
@@ -208,6 +219,10 @@ canvas {
         position: initial;
 
     }
+         #score {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+}
 
 }
 
@@ -217,5 +232,6 @@ canvas {
         transform: scale(1, 1);
 
     }
+
 
 }
