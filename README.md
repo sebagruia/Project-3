@@ -4,6 +4,9 @@
 
 - [Setting the game](#setting_the_game)
 - [How to play](#how_to_play)
+- [Web link](#web_link)
+- [More info](#more_info)
+- [Contribution](#contribution)
 
 
 
@@ -11,7 +14,6 @@
 
 * The game starts by selecting you favorite character;
 * The selection is set after you click the "Select your hero button";
-
 
 
 ## how_to_play
@@ -25,7 +27,13 @@
 
 [Link to the  GitHub Page](https://sebagruia.github.io/Project-3/)
 
+## More Information
 
+* This project is a part from a Nanodegree Program done by Udacity [Link](http://www.udacity.com/)
+
+## Contribution
+
+The game was done exclusively by me, using the start code provided by [Udacity](https://github.com/udacity/frontend-nanodegree-arcade-game), I had to program the complete functionality of the game. Most work was done on the file index.html, app.js and style.css. 
 
 
 
