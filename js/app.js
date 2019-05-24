@@ -129,10 +129,8 @@ class Player {
                 break;
         }
     }
-}
-
-
-//This function selects different Heros *****************
+    
+    //This function selects different Heros *****************
     selectHero = () => {
         const imageHero = document.querySelector('.image-hero');
         const selectLeft = document.querySelector('.fa-caret-left');
@@ -168,6 +166,13 @@ class Player {
         });
 
     }
+    
+    
+    
+}
+
+
+
 
 
 // Now instantiate your objects.
@@ -192,7 +197,7 @@ allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-selectHero();
+player.selectHero();
 document.addEventListener('keyup', (e) => {
     //    console.log(e);
     var allowedKeys = {
