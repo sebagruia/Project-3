@@ -10,7 +10,7 @@ class Enemy {
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
         //        this.sprite = 'images/enemy-bug.png';
-        this.sprite = ['images/enemy-bug.png', ];
+        this.sprite = ['images/enemy-bug.png'];
 
     }
 
@@ -48,6 +48,8 @@ class Enemy {
 }
 
 
+
+
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -55,11 +57,7 @@ class Player {
     constructor([x = 202, y = 404] = []) {
         this.x = x;
         this.y = y;
-        this.sprite = ['images/char-boy.png',
-                        'images/char-horn-girl.png',
-                        'images/char-cat-girl.png',
-                        'images/char-pink-girl.png',
-                        'images/char-princess-girl.png'];
+        this.sprite = 'images/char-cat-girl.png';
     }
 
 
@@ -77,10 +75,13 @@ class Player {
         }
     }
 
-
-    render() {
-        ctx.drawImage(Resources.get(this.sprite[2]), this.x, this.y);
-
+// Draw the player on the screen, required method for game
+    render(hero) {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+// A function for changing the hero character
+    changeHero(hero) {
+        this.sprite = hero;
     }
 
 
@@ -129,46 +130,56 @@ class Player {
                 break;
         }
     }
-    
-    //This function selects different Heros *****************
-    selectHero = () => {
-        const imageHero = document.querySelector('.image-hero');
-        const selectLeft = document.querySelector('.fa-caret-left');
-        const selectRight = document.querySelector('.fa-caret-right');
-        const selector = document.getElementById('selector');
-        const heroSelectBox = document.querySelector('.hero_select_box');
-        const selectH4Text = document.getElementById('selector');
-        const canvas = document.getElementsByTagName('canvas');
-        const score = document.getElementById('score');
-        let j = 2;
-
-            selectLeft.addEventListener('click', (ev1) => {
-                if(j>0){
-                    imageHero.innerHTML = `<img src="${this.sprite[j-1]}">`;
-                    j--;
-                   }
-        });
 
 
-           selectRight.addEventListener('click', (ev2) => {
-            if(j<=3){
-                    imageHero.innerHTML = `<img src="${this.sprite[j+1]}">`;
-                    j++;
-                   }
-        });
 
-        selector.addEventListener('click', (ev) => {
-            heroSelectBox.classList.add('hidden');
-            selectH4Text.classList.add('hidden');
-            score.classList.add('visible');
-            canvas[0].classList.add('reveal');
+}
 
-        });
+//This function selects different Heros *****************
+function selectHero() {
+    const imageHero = document.querySelector('.image-hero');
+    const selectLeft = document.querySelector('.fa-caret-left');
+    const selectRight = document.querySelector('.fa-caret-right');
+    const selector = document.querySelector('.image-hero');
+    const heroSelectBox = document.querySelector('.hero_select_box');
+    const selectH4Text = document.getElementById('selector');
+    const canvas = document.getElementsByTagName('canvas');
+    const score = document.getElementById('score');
+    let selectedHero ='images/char-cat-girl.png';
+    const heroes = ['images/char-boy.png',
+        'images/char-horn-girl.png',
+        'images/char-cat-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'
+    ];
+    let j = 2;
 
-    }
-    
-    
-    
+    selectLeft.addEventListener('click', (ev1) => {
+        if (j > 0) {
+            imageHero.innerHTML = `<img src="${heroes[j-1]}">`;
+            j--;
+        }
+        selectedHero = heroes[j];
+    });
+
+
+    selectRight.addEventListener('click', (ev2) => {
+        if (j <= 3) {
+            imageHero.innerHTML = `<img src="${heroes[j+1]}">`;
+            j++;
+        }
+        selectedHero = heroes[j];
+    });
+
+    selector.addEventListener('click', (ev) => {
+        heroSelectBox.classList.add('hidden');
+        selectH4Text.classList.add('hidden');
+        score.classList.add('visible');
+        canvas[0].classList.add('reveal');
+        player.changeHero(selectedHero);
+        player.render();
+    });
+
 }
 
 
@@ -197,7 +208,7 @@ allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-player.selectHero();
+selectHero();
 document.addEventListener('keyup', (e) => {
     //    console.log(e);
     var allowedKeys = {
