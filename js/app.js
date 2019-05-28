@@ -75,11 +75,11 @@ class Player {
         }
     }
 
-// Draw the player on the screen, required method for game
+    // Draw the player on the screen, required method for game
     render(hero) {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-// A function for changing the hero character
+    // A function for changing the hero character
     changeHero(hero) {
         this.sprite = hero;
     }
@@ -131,6 +131,18 @@ class Player {
         }
     }
 
+    handleInputForMobile(){
+        const clickUp = document.querySelector('.fa-arrow-alt-circle-up');
+        const clickDown = document.querySelector('.fa-arrow-alt-circle-down');
+        const clickLeft = document.querySelector('.fa-arrow-alt-circle-left');
+        const clickRight = document.querySelector('.fa-arrow-alt-circle-right');
+
+        
+
+
+
+    }
+
 
 
 }
@@ -149,9 +161,9 @@ function selectHero() {
     canvasContainer.appendChild(canvas[0]);
     const controller = document.getElementById('controller');
     canvasContainer.appendChild(controller);
-    canvasContainer.classList.add('hidden');
+    canvasContainer.classList.add('hidden', 'canvasContainer');
     const score = document.getElementById('score');
-    let selectedHero ='images/char-cat-girl.png';
+    let selectedHero = 'images/char-cat-girl.png';
     const heroes = ['images/char-boy.png',
         'images/char-horn-girl.png',
         'images/char-cat-girl.png',
