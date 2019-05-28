@@ -132,12 +132,52 @@ class Player {
     }
 
     handleInputForMobile(){
+        const controller = document.getElementById('controller');
         const clickUp = document.querySelector('.fa-arrow-alt-circle-up');
         const clickDown = document.querySelector('.fa-arrow-alt-circle-down');
         const clickLeft = document.querySelector('.fa-arrow-alt-circle-left');
         const clickRight = document.querySelector('.fa-arrow-alt-circle-right');
+        const width = window.innerWidth;
+        if(width<800){
+            controller.classList.remove('hidden');
+            clickUp.addEventListener('click', (e1)=>{
+                if (this.y <= 72) {
+                    this.countingVictory();
 
-        
+                } else {
+                    this.y -= 83;
+                }
+            });
+
+            clickDown.addEventListener('click', (ev2)=>{
+                if (this.y >= 404) {
+                    this.y = 404;
+                } else {
+                    this.y += 83;
+                }
+
+            });
+
+            clickLeft.addEventListener('click',(ev3)=>{
+                if (this.x <= 0) {
+                    this.x = 0;
+                } else {
+                    this.x -= 101;
+                }
+
+            });
+
+            clickRight.addEventListener('click', (ev4)=>{
+                if (this.x >= 404) {
+                    this.x = 404;
+                } else {
+                    this.x += 101;
+                }
+
+            });
+
+        }
+
 
 
 
@@ -161,6 +201,7 @@ function selectHero() {
     canvasContainer.appendChild(canvas[0]);
     const controller = document.getElementById('controller');
     canvasContainer.appendChild(controller);
+    controller.classList.add('hidden');
     canvasContainer.classList.add('hidden', 'canvasContainer');
     const score = document.getElementById('score');
     let selectedHero = 'images/char-cat-girl.png';
@@ -223,6 +264,7 @@ allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 selectHero();
+player.handleInputForMobile();
 document.addEventListener('keyup', (e) => {
     //    console.log(e);
     var allowedKeys = {

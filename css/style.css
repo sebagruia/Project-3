@@ -3,7 +3,7 @@ body {
     text-align: center;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    margin:0;
+    margin: 0;
 }
 
 #score {
@@ -48,14 +48,14 @@ body {
 
 #hero-library .image .fas {
     font-size: 60px;
-    padding: 20px;
+    padding: 10px;
     color: #1c5b8f;
     cursor: pointer;
     animation: mymove 1s infinite;
     -webkit-animation: mymove 1s infinite;
 }
 
-#hero-library .image-hero{
+#hero-library .image-hero {
     cursor: pointer;
 }
 
@@ -83,42 +83,50 @@ body {
 .hero_select_box h4 {
     padding: 0px;
 }
-#controller{
+
+#controller {
     width: 200px;
-    height: 100px;
+    height: 120px;
     margin: 0 auto;
 }
-#controller .controller-list{
+
+#controller .controller-list {
     list-style: none;
 }
 
-#controller .up-down{
+#controller .up-down {
     z-index: 1;
-    padding:0;
-    
-}
-#controller .left-right{
-    z-index: 10;
     padding: 0;
-   
+
 }
 
-#controller .left-right li{
-    display:inline;
+#controller .left-right {
+    z-index: 10;
+    padding: 0;
+    margin-top: -85px;
+
 }
-#controller .left-right li .fa-arrow-alt-circle-left{
-    margin-right: 50px;
+
+#controller .left-right li {
+    display: inline;
 }
-#controller .up-down li .fa-arrow-alt-circle-up{
-    margin-bottom: 50px;
+
+#controller .left-right li .fa-arrow-alt-circle-left {
+    margin-right: 80px;
 }
-.canvasContainer{
+
+#controller .up-down li .fa-arrow-alt-circle-up {
+    margin-bottom: 80px;
+}
+
+.canvasContainer {
     width: 505px;
     height: auto;
     margin: 0 auto;
 }
+
 canvas {
-    width:100%;
+    width: 100%;
     margin-top: -10px;
 }
 
@@ -155,8 +163,13 @@ canvas {
 /*MEDIA QUERIES*/
 
 @media screen and (min-width:320px) {
+
     #controller .left-right {
-        margin-top: -71px;
+        margin-top: -75px;
+    }
+
+    #controller .up-down li .fa-arrow-alt-circle-up {
+        margin-bottom: 60px;
     }
 
     .canvasContainer {
@@ -175,7 +188,6 @@ canvas {
 
     #hero-library .image .fas {
         font-size: 37px;
-        padding: 0;
     }
 
     #score {
@@ -184,50 +196,32 @@ canvas {
 
 }
 
-@media screen and (min-width:384px){
+@media screen and (min-width:384px) {
     .canvasContainer {
         width: 384px;
     }
 
+    #controller .left-right {
+        margin-top: -85px;
+    }
+
+    #controller .up-down li .fa-arrow-alt-circle-up {
+        margin-bottom: 80px;
+    }
+
 }
 
-@media screen and (min-width:500px){
+
+
+@media screen and (min-width:500px) {
     .canvasContainer {
         width: 450px;
     }
 }
 
-
-
-
 @media screen and (min-width:600px) {
-    canvas {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        position: initial;
-
-    }
-
-    /* .canvasContainer{
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-
-    } */
-         #score {
+    #score {
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
-}
-
-}
-
-@media screen and (min-width:800px) {
-    canvas {
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-
     }
-
-
 }
-
-
