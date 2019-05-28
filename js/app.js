@@ -144,6 +144,12 @@ function selectHero() {
     const heroSelectBox = document.querySelector('.hero_select_box');
     const selectH4Text = document.getElementById('selector');
     const canvas = document.getElementsByTagName('canvas');
+    const canvasContainer = document.createElement('div');
+    document.body.appendChild(canvasContainer);
+    canvasContainer.appendChild(canvas[0]);
+    const controller = document.getElementById('controller');
+    canvasContainer.appendChild(controller);
+    canvasContainer.classList.add('hidden');
     const score = document.getElementById('score');
     let selectedHero ='images/char-cat-girl.png';
     const heroes = ['images/char-boy.png',
@@ -175,16 +181,12 @@ function selectHero() {
         heroSelectBox.classList.add('hidden');
         selectH4Text.classList.add('hidden');
         score.classList.add('visible');
-        canvas[0].classList.add('reveal');
+        canvasContainer.classList.remove('hidden');
         player.changeHero(selectedHero);
         player.render();
     });
 
 }
-
-
-
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies

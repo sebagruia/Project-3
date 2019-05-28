@@ -49,7 +49,7 @@ body {
 #hero-library .image .fas {
     font-size: 60px;
     padding: 20px;
-    color: #0b669f;
+    color: #1c5b8f;
     cursor: pointer;
     animation: mymove 1s infinite;
     -webkit-animation: mymove 1s infinite;
@@ -83,9 +83,39 @@ body {
 .hero_select_box h4 {
     padding: 0px;
 }
+#controller{
+    position:relative;
+    margin:0 auto;
+    /* margin-top: 300px; */
+}
+#controller .controller-list{
+    list-style: none;
+}
+
+#controller .up-down{
+    position: absolute;
+    left: 832px;
+    padding: 0;
+}
+#controller .left-right{
+    position: absolute;
+    left: 794px;
+    top: 36px;
+    padding: 0;
+}
+
+#controller .left-right li{
+    display:inline;
+}
+#controller .left-right li .fa-arrow-alt-circle-left{
+    margin-right: 50px;
+}
+#controller .up-down li .fa-arrow-alt-circle-up{
+    margin-bottom: 50px;
+}
 
 canvas {
-    display: none;
+    margin-top: -10px;
 }
 
 /*KEYFRAMES*/
