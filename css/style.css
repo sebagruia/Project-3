@@ -31,14 +31,14 @@ body {
 
 .hero_select_box {
     background-color: #fff;
-    width: 505px;
-    height: 606px;
+    width: 300px;
+    height: 340px;
     margin: 0 auto;
 }
 
 #hero-library {
     width: 100%;
-    padding: 38% 0px 0 0;
+    padding: 0;
 }
 
 #hero-library .image {
@@ -181,11 +181,7 @@ canvas {
         transform: scale(0.9, 0.9);
     }
 
-    .hero_select_box {
-        width: 200px;
-        height: 340px;
-    }
-
+    
     #hero-library .image .fas {
         font-size: 37px;
     }

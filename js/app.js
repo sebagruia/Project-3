@@ -54,7 +54,7 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player {
-    constructor([x = 202, y = 404] = []) {
+    constructor([x = 202, y = 575] = []) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-cat-girl.png';
@@ -66,7 +66,7 @@ class Player {
         // collision algoritm and implementation of the "eatenAlive" counter
         for (const enemy of allEnemies) {
             if (this.x < (enemy.x + 50) && (this.x + 50) > enemy.x && this.y < (enemy.y + 40) && (this.y + 40) > enemy.y) {
-                this.y = 404;
+                this.y = 575;
                 this.x = 202;
                 eatenAliveNumbr++;
                 eatenAlive.innerHTML = `${eatenAliveNumbr}`;
@@ -91,7 +91,7 @@ class Player {
         victoryNumber++;
         surviveCount.innerHTML = `${victoryNumber}`;
         this.x = 202;
-        this.y = 404;
+        this.y = 575;
     }
 
     //This deals with the movement of the Hero *****************
@@ -114,16 +114,15 @@ class Player {
                 };
                 break;
             case 'up':
-                if (this.y <= 72) {
+                if (this.y <= 78) {
                     this.countingVictory();
-
                 } else {
                     this.y -= 83;
                 };
                 break;
             case 'down':
-                if (this.y >= 404) {
-                    this.y = 404;
+                if (this.y >= 575) {
+                    this.y = 575;
                 } else {
                     this.y += 83;
                 }
@@ -131,6 +130,7 @@ class Player {
         }
     }
 
+    //This deals with the movement of the Hero on MOBILE *****************
     handleInputForMobile(){
         const controller = document.getElementById('controller');
         const clickUp = document.querySelector('.fa-arrow-alt-circle-up');
@@ -141,21 +141,19 @@ class Player {
         if(width<800){
             controller.classList.remove('hidden');
             clickUp.addEventListener('click', (e1)=>{
-                if (this.y <= 72) {
+                if (this.y <= 78) {
                     this.countingVictory();
-
                 } else {
                     this.y -= 83;
                 }
             });
 
             clickDown.addEventListener('click', (ev2)=>{
-                if (this.y >= 404) {
-                    this.y = 404;
+                if (this.y >= 575) {
+                    this.y = 575;
                 } else {
                     this.y += 83;
                 }
-
             });
 
             clickLeft.addEventListener('click',(ev3)=>{
@@ -164,7 +162,6 @@ class Player {
                 } else {
                     this.x -= 101;
                 }
-
             });
 
             clickRight.addEventListener('click', (ev4)=>{
@@ -173,17 +170,11 @@ class Player {
                 } else {
                     this.x += 101;
                 }
-
             });
 
         }
 
-
-
-
     }
-
-
 
 }
 
@@ -245,7 +236,8 @@ function selectHero() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-const speeds = [150, 200, 450]; // different values for speed, that enemies can use
+// const speeds = [150, 200, 450]; // different values for speed, that enemies can use
+const speeds = [0, 0, 0]; // different values for speed, that enemies can use
 let victoryNumber = 0;
 let eatenAliveNumbr = 0;
 let randomSpeedGenerator = (array) => { // a function that generates random speeds 
