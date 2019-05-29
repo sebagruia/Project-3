@@ -163,9 +163,16 @@ canvas {
 /*MEDIA QUERIES*/
 
 @media screen and (min-width:320px) {
+    #controller .up-down {
+        margin-top: -12px;
+    }
 
     #controller .left-right {
         margin-top: -75px;
+    }
+
+    #controller .left-right li .fa-arrow-alt-circle-left {
+        margin-right: 65px;
     }
 
     #controller .up-down li .fa-arrow-alt-circle-up {
@@ -173,7 +180,7 @@ canvas {
     }
 
     .canvasContainer {
-        width: 320px;
+        width: 245px;
     }
 
     #score {
@@ -181,7 +188,7 @@ canvas {
         transform: scale(0.9, 0.9);
     }
 
-    
+
     #hero-library .image .fas {
         font-size: 37px;
     }
@@ -192,26 +199,42 @@ canvas {
 
 }
 
-@media screen and (min-width:384px) {
+@media screen and (min-width:360px) {
     .canvasContainer {
-        width: 384px;
+        width: 275px;
+    }
+}
+
+@media screen and (min-width:375px) {
+    .canvasContainer {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width:384px) {
+
+    #controller .left-right {
+        margin-top: -75px;
+    }
+
+
+}
+
+@media screen and (min-width:500px) {
+    .canvasContainer {
+        width: 400px;
     }
 
     #controller .left-right {
         margin-top: -85px;
     }
 
-    #controller .up-down li .fa-arrow-alt-circle-up {
-        margin-bottom: 80px;
+    #controller .left-right li .fa-arrow-alt-circle-left {
+        margin-right: 80px;
     }
 
-}
-
-
-
-@media screen and (min-width:500px) {
-    .canvasContainer {
-        width: 450px;
+    #controller .up-down li .fa-arrow-alt-circle-up {
+        margin-bottom: 80px;
     }
 }
 
@@ -219,5 +242,14 @@ canvas {
     #score {
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
+    }
+    .canvasContainer {
+        width: 430px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .canvasContainer {
+        width: 450px;
     }
 }

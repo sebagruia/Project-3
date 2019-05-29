@@ -138,7 +138,7 @@ class Player {
         const clickLeft = document.querySelector('.fa-arrow-alt-circle-left');
         const clickRight = document.querySelector('.fa-arrow-alt-circle-right');
         const width = window.innerWidth;
-        if(width<800){
+        if(width<=800){
             controller.classList.remove('hidden');
             clickUp.addEventListener('click', (e1)=>{
                 if (this.y <= 78) {
@@ -236,8 +236,8 @@ function selectHero() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-// const speeds = [150, 200, 450]; // different values for speed, that enemies can use
-const speeds = [0, 0, 0]; // different values for speed, that enemies can use
+const speeds = [150, 200, 450]; // different values for speed, that enemies can use
+// const speeds = [0, 0, 0]; // different values for speed, that enemies can use
 let victoryNumber = 0;
 let eatenAliveNumbr = 0;
 let randomSpeedGenerator = (array) => { // a function that generates random speeds 
