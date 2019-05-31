@@ -21,7 +21,7 @@ class Enemy {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-        let yPosition = [60, 140, 220]; // different y positions that can be used
+        let yPosition = [60, 140, 220, 316, 390, 485]; // different y positions that can be used
         let yNewPosition = [];
         let curentIndex = yPosition.length;
         if (this.x >= 0) {
@@ -35,7 +35,8 @@ class Enemy {
                     yPosition[i] = yNewPosition[i];
                 }
                 yNewPosition = [];
-                this.y = yPosition[0];
+                const newRandomNumber = Math.floor(Math.random() * curentIndex);
+                this.y = yPosition[newRandomNumber];
             }
         }
     }
@@ -104,6 +105,7 @@ class Player {
                     this.x = 0;
                 } else {
                     this.x -= 101;
+                    console.log(this.x);
                 }
                 break;
             case 'right':
@@ -111,13 +113,16 @@ class Player {
                     this.x = 404;
                 } else {
                     this.x += 101;
+                    console.log(this.x);
                 };
                 break;
             case 'up':
                 if (this.y <= 78) {
                     this.countingVictory();
+
                 } else {
                     this.y -= 83;
+                    console.log(this.y);
                 };
                 break;
             case 'down':
@@ -125,6 +130,7 @@ class Player {
                     this.y = 575;
                 } else {
                     this.y += 83;
+                    console.log(this.y);
                 }
                 break;
         }
@@ -237,7 +243,6 @@ function selectHero() {
 // Place the player object in a variable called player
 const allEnemies = [];
 const speeds = [150, 200, 450]; // different values for speed, that enemies can use
-// const speeds = [0, 0, 0]; // different values for speed, that enemies can use
 let victoryNumber = 0;
 let eatenAliveNumbr = 0;
 let randomSpeedGenerator = (array) => { // a function that generates random speeds 
@@ -247,10 +252,12 @@ let randomSpeedGenerator = (array) => { // a function that generates random spee
 
 const player = new Player();
 const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds));
-const enemy2 = new Enemy(101, 140, randomSpeedGenerator(speeds));
-const enemy3 = new Enemy(101, 220, randomSpeedGenerator(speeds));
-const enemy4 = new Enemy(0, 220, randomSpeedGenerator(speeds));
-allEnemies.push(enemy1, enemy2, enemy3, enemy4);
+const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds));
+const enemy3 = new Enemy(0, 220, randomSpeedGenerator(speeds));
+const enemy4 = new Enemy(0, 485, randomSpeedGenerator(speeds));
+const enemy5 = new Enemy(0, 390, randomSpeedGenerator(speeds));
+const enemy6 = new Enemy(0, 316, randomSpeedGenerator(speeds));
+allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5, enemy6);
 
 
 // This listens for key presses and sends the keys to your
