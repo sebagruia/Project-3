@@ -62,14 +62,19 @@ class Player {
 
 
     update(dt) {
-        const eatenAlive = document.querySelector('.eatenalive_counter');
+        const lives = document.querySelector('.lives');
+        let livesNumber = 3;
         // collision algoritm and implementation of the "eatenAlive" counter
         for (const enemy of allEnemies) {
             if (this.x < (enemy.x + 50) && (this.x + 50) > enemy.x && this.y < (enemy.y + 40) && (this.y + 40) > enemy.y) {
                 this.y = 575;
-                this.x = 202;
-                eatenAliveNumbr++;
-                eatenAlive.innerHTML = `${eatenAliveNumbr}`;
+                this.x = 303;
+                livesNumber--;
+                lives.innerHTML = `${livesNumber}`;
+                if (livesNumber == 0) {
+                    restartGame();
+                }
+                
             }
 
         }
@@ -85,12 +90,27 @@ class Player {
     }
 
 
+    //This function DISPLAYS the selection Hero page *****************
+    restartGame = () => {
+    const gameOver = document.getElementById('game-over');
+    gameOver.classList.remove('hidden');
+    const restartGame = document.querySelector('.restart-game');
+    const canvas = document.querySelector('canvas');
+    const score = document.getElementById('score');
+    gameOver.classList.remove('hidden');
+    restartGame.addEventListener('click', (restart) => {
+        canvas.classList.add('hidden');
+        score.classList.add('hidden');
+        gameOver.classList.add('hidden');
+    });
+}
+
     //This deals with counting the Hero wins *****************
     countingVictory() {
-        const surviveCount = document.querySelector('.survived_counter');
-        victoryNumber++;
-        surviveCount.innerHTML = `${victoryNumber}`;
-        this.x = 202;
+        const scoreCount = document.querySelector('.score_counter');
+        victoryNumber += 100;
+        scoreCount.innerHTML = `${victoryNumber}`;
+        this.x = 303;
         this.y = 575;
     }
 
@@ -134,16 +154,16 @@ class Player {
     }
 
     //This deals with the movement of the Hero on MOBILE *****************
-    handleInputForMobile(){
+    handleInputForMobile() {
         const controller = document.getElementById('controller');
         const clickUp = document.querySelector('.fa-arrow-alt-circle-up');
         const clickDown = document.querySelector('.fa-arrow-alt-circle-down');
         const clickLeft = document.querySelector('.fa-arrow-alt-circle-left');
         const clickRight = document.querySelector('.fa-arrow-alt-circle-right');
         const width = window.innerWidth;
-        if(width<=800){
+        if (width <= 800) {
             controller.classList.remove('hidden');
-            clickUp.addEventListener('click', (e1)=>{
+            clickUp.addEventListener('click', (e1) => {
                 if (this.y <= 78) {
                     this.countingVictory();
                 } else {
@@ -151,7 +171,7 @@ class Player {
                 }
             });
 
-            clickDown.addEventListener('click', (ev2)=>{
+            clickDown.addEventListener('click', (ev2) => {
                 if (this.y >= 575) {
                     this.y = 575;
                 } else {
@@ -159,7 +179,7 @@ class Player {
                 }
             });
 
-            clickLeft.addEventListener('click',(ev3)=>{
+            clickLeft.addEventListener('click', (ev3) => {
                 if (this.x <= 0) {
                     this.x = 0;
                 } else {
@@ -167,7 +187,7 @@ class Player {
                 }
             });
 
-            clickRight.addEventListener('click', (ev4)=>{
+            clickRight.addEventListener('click', (ev4) => {
                 if (this.x >= 404) {
                     this.x = 404;
                 } else {
@@ -182,7 +202,7 @@ class Player {
 }
 
 //This function selects different Heros *****************
-function selectHero() {
+const selectHero = () => {
     const imageHero = document.querySelector('.image-hero');
     const selectLeft = document.querySelector('.fa-caret-left');
     const selectRight = document.querySelector('.fa-caret-right');
@@ -235,26 +255,22 @@ function selectHero() {
 
 }
 
+
+
+
 // GLOBAL VARIABLES
 const allEnemies = [];
-const speeds =[[50,80,150],[100,150,250],[200, 350, 450]] ; // different values for speed, that enemies can use
+const speeds = [
+    [50, 80, 150],
+    [100, 150, 250],
+    [200, 350, 450]
+]; // different values for speed, that enemies can use
 let victoryNumber = 0;
 let eatenAliveNumbr = 0;
 let randomSpeedGenerator = (array) => { // a function that generates random speeds 
     const randomNumber = Math.floor((Math.random() * array.length) + 1);
     return array[randomNumber - 1];
 };
-// randomSpeedGenerator = () => { 
-    
-
-
-//     }
-//     const randomNumber = Math.floor((Math.random() * array.length) + 1);
-//     return array[randomNumber - 1];
-// };
-
-
-// ++++++++++++++++++++++++++++++
 
 //Instantiate Objects.
 const player = new Player();
