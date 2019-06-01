@@ -24,7 +24,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
+    canvas.width = 707;
     canvas.height = 808;
     doc.body.appendChild(canvas);
 
@@ -81,7 +81,11 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
     }
-
+    
+    let randomSpeedGenerator = (array) => { // a function that generates random speeds 
+        const randomNumber = Math.floor((Math.random() * array.length) + 1);
+        return array[randomNumber - 1];
+    };
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -117,7 +121,7 @@ var Engine = (function(global) {
                 'images/grass-block.png'    // Row 1 of 4 of grass
             ],
             numRows = 8,
-            numCols = 5,
+            numCols = 7,
             row, col;
 
         // Before drawing, clear existing canvas

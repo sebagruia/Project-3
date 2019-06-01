@@ -35,8 +35,7 @@ class Enemy {
                     yPosition[i] = yNewPosition[i];
                 }
                 yNewPosition = [];
-                const newRandomNumber = Math.floor(Math.random() * curentIndex);
-                this.y = yPosition[newRandomNumber];
+                this.y = yPosition[0];
             }
         }
     }
@@ -55,7 +54,7 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player {
-    constructor([x = 202, y = 575] = []) {
+    constructor([x = 303, y = 575] = []) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-cat-girl.png';
@@ -122,7 +121,6 @@ class Player {
 
                 } else {
                     this.y -= 83;
-                    console.log(this.y);
                 };
                 break;
             case 'down':
@@ -130,7 +128,6 @@ class Player {
                     this.y = 575;
                 } else {
                     this.y += 83;
-                    console.log(this.y);
                 }
                 break;
         }
@@ -189,7 +186,7 @@ function selectHero() {
     const imageHero = document.querySelector('.image-hero');
     const selectLeft = document.querySelector('.fa-caret-left');
     const selectRight = document.querySelector('.fa-caret-right');
-    const selector = document.querySelector('.image-hero');
+    const selector = document.getElementById('selector');
     const heroSelectBox = document.querySelector('.hero_select_box');
     const selectH4Text = document.getElementById('selector');
     const canvas = document.getElementsByTagName('canvas');
@@ -238,25 +235,35 @@ function selectHero() {
 
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// GLOBAL VARIABLES
 const allEnemies = [];
-const speeds = [150, 200, 450]; // different values for speed, that enemies can use
+const speeds =[[50,80,150],[100,150,250],[200, 350, 450]] ; // different values for speed, that enemies can use
 let victoryNumber = 0;
 let eatenAliveNumbr = 0;
 let randomSpeedGenerator = (array) => { // a function that generates random speeds 
     const randomNumber = Math.floor((Math.random() * array.length) + 1);
     return array[randomNumber - 1];
 };
+// randomSpeedGenerator = () => { 
+    
 
+
+//     }
+//     const randomNumber = Math.floor((Math.random() * array.length) + 1);
+//     return array[randomNumber - 1];
+// };
+
+
+// ++++++++++++++++++++++++++++++
+
+//Instantiate Objects.
 const player = new Player();
-const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds));
-const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds));
-const enemy3 = new Enemy(0, 220, randomSpeedGenerator(speeds));
-const enemy4 = new Enemy(0, 485, randomSpeedGenerator(speeds));
-const enemy5 = new Enemy(0, 390, randomSpeedGenerator(speeds));
-const enemy6 = new Enemy(0, 316, randomSpeedGenerator(speeds));
+const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds[0]));
+const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds[0]));
+const enemy3 = new Enemy(0, 220, randomSpeedGenerator(speeds[0]));
+const enemy4 = new Enemy(0, 485, randomSpeedGenerator(speeds[0]));
+const enemy5 = new Enemy(0, 390, randomSpeedGenerator(speeds[0]));
+const enemy6 = new Enemy(0, 316, randomSpeedGenerator(speeds[0]));
 allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5, enemy6);
 
 

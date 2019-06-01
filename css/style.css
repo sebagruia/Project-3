@@ -29,6 +29,30 @@ body {
     padding: 0px;
 }
 
+#level{
+    list-style:none;
+    padding:0;
+    margin-top: -5px;
+}
+
+#level li{
+    display:inline-block;
+    padding-left: 20px;
+}
+
+#level li button{
+    border-radius:10px;
+    cursor:pointer;
+    padding-left:10px;
+    padding-right: 10px;
+}
+
+#level li button h6{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
 .hero_select_box {
     background-color: #fff;
     width: 300px;
@@ -55,8 +79,11 @@ body {
     -webkit-animation: mymove 1s infinite;
 }
 
-#hero-library .image-hero {
+#selector{
+    font-family: 'Orbitron', sans-serif !important;
+    font-size:20px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .hidden {
@@ -80,9 +107,6 @@ body {
     margin-left: 10%;
 }
 
-.hero_select_box h4 {
-    padding: 0px;
-}
 
 #controller {
     width: 200px;
@@ -111,6 +135,9 @@ body {
     display: inline;
 }
 
+#controller .controller-list .fas{
+    font-size:20px;
+}
 #controller .left-right li .fa-arrow-alt-circle-left {
     margin-right: 80px;
 }
@@ -127,7 +154,8 @@ body {
 
 canvas {
     width: 100%;
-    margin-top: -10px;
+    margin-top: -42px;
+    
 }
 
 /*KEYFRAMES*/
@@ -164,7 +192,7 @@ canvas {
 
 @media screen and (min-width:320px) {
     #controller .up-down {
-        margin-top: -12px;
+        margin-top: 0px;
     }
 
     #controller .left-right {
@@ -180,7 +208,8 @@ canvas {
     }
 
     .canvasContainer {
-        width: 245px;
+        width: 265px;
+        margin-top: 30px;
     }
 
     #score {
@@ -201,13 +230,13 @@ canvas {
 
 @media screen and (min-width:360px) {
     .canvasContainer {
-        width: 275px;
+        width: 335px;
     }
 }
 
 @media screen and (min-width:375px) {
     .canvasContainer {
-        width: 300px;
+        width: 360px;
     }
 }
 
@@ -220,9 +249,19 @@ canvas {
 
 }
 
+@media screen and (min-width:400px) {
+    #controller .up-down {
+        margin-top: 0;
+    }
+    .canvasContainer {
+        width: 385px;
+    }
+
+    }
+
 @media screen and (min-width:500px) {
     .canvasContainer {
-        width: 400px;
+        width: 450px;
     }
 
     #controller .left-right {
@@ -232,7 +271,9 @@ canvas {
     #controller .left-right li .fa-arrow-alt-circle-left {
         margin-right: 80px;
     }
-
+#controller .up-down {
+    margin-top: 10px;
+}
     #controller .up-down li .fa-arrow-alt-circle-up {
         margin-bottom: 80px;
     }
@@ -244,12 +285,7 @@ canvas {
         transform: scale(1, 1);
     }
     .canvasContainer {
-        width: 430px;
+        width: 550px;
     }
 }
 
-@media screen and (min-width: 800px) {
-    .canvasContainer {
-        width: 450px;
-    }
-}
