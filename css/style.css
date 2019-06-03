@@ -62,8 +62,16 @@ body {
     left: 44.5%;
     top: 40%;
 }
-
-#game-over h4{
+#game-over .restart-game{
+    border:none;
+    background-color: #eee;
+    border-radius:10px;
+    margin-bottom: 10px;
+}
+#game-over .restart-game:hover{
+    background-color:#d8d8d8;
+}
+#game-over .restart-game h4{
     cursor:pointer;
 }
 .hero_select_box {
@@ -109,6 +117,10 @@ body {
 
 .visible {
     visibility: visible !important;
+}
+
+.not-visible{
+    visibility: hidden!important;
 }
 
 .left,
