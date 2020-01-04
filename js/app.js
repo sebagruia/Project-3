@@ -97,7 +97,7 @@ class Player {
         this.sprite = hero;
     }
 
-    //This function restarts the DISPLAYING the Selection Hero Page again *****************
+    //This function restarts DISPLAYING the Selection Hero Page again *****************
        static restartGame = () => {
             const gameOver = document.getElementById('game-over');
             gameOver.classList.add('reveal');
@@ -106,18 +106,22 @@ class Player {
             const score = document.getElementById('score');
             const heroSelectBox = document.querySelector('.hero_select_box');
             const lives = document.querySelector('.lives');
+            const scoreCount = document.querySelector('.score_counter');
             restartGame.addEventListener('click', (restart) => {
                 canvasContainer.classList.add('hidden');
                 score.classList.add('not-visible');
+                score.classList.remove('visible');
                 gameOver.classList.remove('reveal');
                 heroSelectBox.classList.remove('hidden');
                  // resets the speed of the enemy to the default value level "Easy"
                 for(const enemy of allEnemies){
                     enemy.speed = randomSpeedGenerator(speeds[0]);
-
                 }
                 // resets the "Lives Counter" to equal 3
                 lives.innerHTML = 3;
+                // resets the "Score Counter" to equal 0
+                scoreCount.innerHTML = 0;
+
             });
         }
 
@@ -223,7 +227,6 @@ const selectHero = () => {
     const selectRight = document.querySelector('.fa-caret-right');
     const selector = document.getElementById('selector');
     const heroSelectBox = document.querySelector('.hero_select_box');
-    // const selectH4Text = document.getElementById('selector');
     const canvas = document.getElementsByTagName('canvas');
     const canvasContainer = document.createElement('div');
     document.body.appendChild(canvasContainer);
@@ -261,8 +264,8 @@ const selectHero = () => {
 
     selector.addEventListener('click', (ev) => {
         heroSelectBox.classList.add('hidden');
-        score.classList.add('visible');
         score.classList.remove('not-visible');
+        score.classList.add('visible');
         canvasContainer.classList.remove('hidden');
         player.changeHero(selectedHero);
         player.render();

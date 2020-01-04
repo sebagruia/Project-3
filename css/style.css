@@ -1,5 +1,5 @@
 body {
-    position:relative;
+    position: relative;
     font-family: 'Orbitron', sans-serif !important;
     text-align: center;
     -webkit-box-sizing: border-box;
@@ -30,50 +30,54 @@ body {
     padding: 0px;
 }
 
-#level{
-    list-style:none;
-    padding:0;
+#level {
+    list-style: none;
+    padding: 0;
     margin-top: -5px;
 }
 
-#level li{
-    display:inline-block;
+#level li {
+    display: inline-block;
     padding-left: 20px;
 }
 
-#level li button{
+#level li button {
     background-color: #eee;
-    border-radius:10px;
-    cursor:pointer;
-    padding-left:10px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-left: 10px;
     padding-right: 10px;
 }
 
-#level li button h6{
+#level li button h6 {
     margin-top: 6px;
     margin-bottom: 6px;
 }
 
-#game-over{
-    display:none;
+#game-over {
+    display: none;
     background-color: #eee;
     width: 180px;
-    position:absolute;
+    position: absolute;
     left: 44.5%;
     top: 40%;
 }
-#game-over .restart-game{
-    border:none;
+
+#game-over .restart-game {
+    border: none;
     background-color: #eee;
-    border-radius:10px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
-#game-over .restart-game:hover{
-    background-color:#d8d8d8;
+
+#game-over .restart-game:hover {
+    background-color: #d8d8d8;
 }
-#game-over .restart-game h4{
-    cursor:pointer;
+
+#game-over .restart-game h4 {
+    cursor: pointer;
 }
+
 .hero_select_box {
     background-color: #fff;
     width: 300px;
@@ -100,9 +104,9 @@ body {
     -webkit-animation: mymove 1s infinite;
 }
 
-#selector{
+#selector {
     font-family: 'Orbitron', sans-serif !important;
-    font-size:20px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 10px;
 }
@@ -119,8 +123,8 @@ body {
     visibility: visible !important;
 }
 
-.not-visible{
-    visibility: hidden!important;
+.not-visible {
+    visibility: hidden;
 }
 
 .left,
@@ -160,9 +164,10 @@ body {
     display: inline;
 }
 
-#controller .controller-list .fas{
-    font-size:20px;
+#controller .controller-list .fas {
+    font-size: 20px;
 }
+
 #controller .left-right li .fa-arrow-alt-circle-left {
     margin-right: 80px;
 }
@@ -180,7 +185,7 @@ body {
 canvas {
     width: 100%;
     margin-top: -42px;
-    
+
 }
 
 /*KEYFRAMES*/
@@ -251,6 +256,11 @@ canvas {
         width: 300px;
     }
 
+    #game-over {
+        left: 23.5%;
+        top: 26%;
+    }
+
 }
 
 @media screen and (min-width:360px) {
@@ -271,6 +281,10 @@ canvas {
         margin-top: -75px;
     }
 
+    #game-over {
+        left: 27.5%;
+        top: 26%;
+    }
 
 }
 
@@ -278,11 +292,12 @@ canvas {
     #controller .up-down {
         margin-top: 0;
     }
+
     .canvasContainer {
         width: 385px;
     }
 
-    }
+}
 
 @media screen and (min-width:500px) {
     .canvasContainer {
@@ -296,9 +311,11 @@ canvas {
     #controller .left-right li .fa-arrow-alt-circle-left {
         margin-right: 80px;
     }
-#controller .up-down {
-    margin-top: 10px;
-}
+
+    #controller .up-down {
+        margin-top: 10px;
+    }
+
     #controller .up-down li .fa-arrow-alt-circle-up {
         margin-bottom: 80px;
     }
@@ -309,8 +326,36 @@ canvas {
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
     }
+
     .canvasContainer {
         width: 550px;
     }
+
+    #game-over {
+        left: 35.5%;
+        top: 31%;
+    }
 }
 
+@media screen and (min-width: 700px) {
+    #game-over {
+        left: 37.5%;
+        top: 31%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #game-over {
+        left: 39.5%;
+        top: 31%;
+    }
+
+}
+
+@media screen and (min-width:900px) {
+    #game-over {
+        left: 44.5%;
+        top: 39%;
+    }
+
+}
