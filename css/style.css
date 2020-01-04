@@ -31,6 +31,7 @@ body {
 }
 
 #level {
+    width: 284px;
     list-style: none;
     padding: 0;
     margin-top: -5px;
@@ -273,6 +274,9 @@ canvas {
     .canvasContainer {
         width: 360px;
     }
+    #game-over {
+        left: 26.5%;
+    }
 }
 
 @media screen and (min-width:384px) {
@@ -283,7 +287,6 @@ canvas {
 
     #game-over {
         left: 27.5%;
-        top: 26%;
     }
 
 }
@@ -295,6 +298,12 @@ canvas {
 
     .canvasContainer {
         width: 385px;
+    }
+
+}
+@media screen and (min-width:480px) {
+    #game-over {
+        left: 31.5%;
     }
 
 }
@@ -318,6 +327,9 @@ canvas {
 
     #controller .up-down li .fa-arrow-alt-circle-up {
         margin-bottom: 80px;
+    }
+    #game-over {
+        left: 33.5%;
     }
 }
 

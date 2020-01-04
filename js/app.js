@@ -60,7 +60,7 @@ class Player {
         this.sprite = 'images/char-cat-girl.png';
     }
 
-    
+
 
     update(dt) {
         const lives = document.querySelector('.lives');
@@ -69,20 +69,22 @@ class Player {
             if (this.x < (enemy.x + 50) && (this.x + 50) > enemy.x && this.y < (enemy.y + 40) && (this.y + 40) > enemy.y) {
                 this.y = 575;
                 this.x = 303;
-                livesNumber--;
-                
-                if (livesNumber == 0) {
-                    Player.restartGame();
-                    livesNumber=3;
+                if (livesNumber > 0) {
+                    livesNumber--;
+                }
+
+                if (livesNumber === 0) {
+                    this.restartGame();
+                    // livesNumber=3;
                     // sets the speed of the enemy to 0
-                    for(const enemy of allEnemies){
+                    for (const enemy of allEnemies) {
                         enemy.speed = 0;
                     }
                 }
                 lives.innerHTML = `${livesNumber}`;
             }
-            
-            
+
+
         }
     }
 
@@ -96,43 +98,55 @@ class Player {
     changeHero(hero) {
         this.sprite = hero;
     }
-
+    setPlayerToInitialPosition = ()=>{
+        this.x = 303;
+        this.y = 575;
+    }
     //This function restarts DISPLAYING the Selection Hero Page again *****************
-       static restartGame = () => {
-            const gameOver = document.getElementById('game-over');
-            gameOver.classList.add('reveal');
-            const restartGame = document.querySelector('.restart-game');
-            const canvasContainer = document.querySelector('.canvasContainer');
-            const score = document.getElementById('score');
-            const heroSelectBox = document.querySelector('.hero_select_box');
-            const lives = document.querySelector('.lives');
-            const scoreCount = document.querySelector('.score_counter');
-            restartGame.addEventListener('click', (restart) => {
-                canvasContainer.classList.add('hidden');
-                score.classList.add('not-visible');
-                score.classList.remove('visible');
-                gameOver.classList.remove('reveal');
-                heroSelectBox.classList.remove('hidden');
-                 // resets the speed of the enemy to the default value level "Easy"
-                for(const enemy of allEnemies){
-                    enemy.speed = randomSpeedGenerator(speeds[0]);
-                }
-                // resets the "Lives Counter" to equal 3
-                lives.innerHTML = 3;
-                // resets the "Score Counter" to equal 0
-                scoreCount.innerHTML = 0;
+    restartGame = () => {
+        const gameOver = document.getElementById('game-over');
+        gameOver.classList.add('reveal');
+        const restartGame = document.querySelector('.restart-game');
+        const canvasContainer = document.querySelector('.canvasContainer');
+        const score = document.getElementById('score');
+        const heroSelectBox = document.querySelector('.hero_select_box');
+        const lives = document.querySelector('.lives');
+        const scoreCount = document.querySelector('.score_counter');
+        restartGame.addEventListener('click', () => {
+            canvasContainer.classList.add('hidden');
+            score.classList.add('not-visible');
+            score.classList.remove('visible');
+            gameOver.classList.remove('reveal');
+            heroSelectBox.classList.remove('hidden');
+            // resets the speed of the enemy to the default value level "Easy"
+            for (const enemy of allEnemies) {
+                enemy.speed = randomSpeedGenerator(speeds);
+            }
+            // resets the "Lives Counter" to equal 3
+            livesNumber = 3;
+            lives.innerHTML = livesNumber;
+            // resets the "Score Counter" to equal 0
+            this.resetCountingVictory();
+            scoreCount.innerHTML = 0;
+            this.setPlayerToInitialPosition();
 
-            });
-        }
+        });
+    }
 
 
     //This deals with counting the Hero wins *****************
     countingVictory() {
         const scoreCount = document.querySelector('.score_counter');
-        victoryNumber += 100;
+        if (livesNumber > 0) {
+            victoryNumber += 100;
+        }
         scoreCount.innerHTML = `${victoryNumber}`;
         this.x = 303;
         this.y = 575;
+    }
+
+    resetCountingVictory = () => {
+        victoryNumber = 0;
     }
 
     //This deals with the movement of the Hero *****************
@@ -182,7 +196,7 @@ class Player {
         const width = window.innerWidth;
         if (width <= 800) {
             controller.classList.remove('hidden');
-            clickUp.addEventListener('click', (e1) => {
+            clickUp.addEventListener('click', () => {
                 if (this.y <= 78) {
                     this.countingVictory();
                 } else {
@@ -190,7 +204,7 @@ class Player {
                 }
             });
 
-            clickDown.addEventListener('click', (ev2) => {
+            clickDown.addEventListener('click', () => {
                 if (this.y >= 575) {
                     this.y = 575;
                 } else {
@@ -198,7 +212,7 @@ class Player {
                 }
             });
 
-            clickLeft.addEventListener('click', (ev3) => {
+            clickLeft.addEventListener('click', () => {
                 if (this.x <= 0) {
                     this.x = 0;
                 } else {
@@ -206,7 +220,7 @@ class Player {
                 }
             });
 
-            clickRight.addEventListener('click', (ev4) => {
+            clickRight.addEventListener('click', () => {
                 if (this.x >= 606) {
                     this.x = 606;
                 } else {
@@ -219,6 +233,9 @@ class Player {
     }
 
 }
+//==============End of Player Class======================
+
+
 
 //This function selects different Heros *****************
 const selectHero = () => {
@@ -247,7 +264,7 @@ const selectHero = () => {
 
     selectLeft.addEventListener('click', (ev1) => {
         if (j > 0) {
-            imageHero.innerHTML = `<img src="${heroes[j-1]}">`;
+            imageHero.innerHTML = `<img src="${heroes[j - 1]}">`;
             j--;
         }
         selectedHero = heroes[j];
@@ -256,7 +273,7 @@ const selectHero = () => {
 
     selectRight.addEventListener('click', (ev2) => {
         if (j <= 3) {
-            imageHero.innerHTML = `<img src="${heroes[j+1]}">`;
+            imageHero.innerHTML = `<img src="${heroes[j + 1]}">`;
             j++;
         }
         selectedHero = heroes[j];
@@ -273,38 +290,62 @@ const selectHero = () => {
 
 }
 
+// A function that generates random speeds 
+let randomSpeedGenerator = (array) => { 
+    console.log(array);
+    const randomNumber = Math.floor((Math.random() * array.length) + 1);
+    return array[randomNumber - 1];
+};
+
+// A function that changes the difficulty of the game
+const difficultyLevel = () => {
+    const easy = document.querySelector('.easy');
+    const hard = document.querySelector('.hard');
+    const impossible = document.querySelector('.impossible');
+
+    easy.addEventListener('click', (event) => {
+        for (const enemy of allEnemies) {
+            const speedEasy = [50, 80, 150];
+            enemy.speed = randomSpeedGenerator(speedEasy);
+        }
+
+    });
+    hard.addEventListener('click', (event) => {
+        for (const enemy of allEnemies) {
+            const speedHard = [100, 150, 250];
+            enemy.speed = randomSpeedGenerator(speedHard);
+        }
+    });
+    impossible.addEventListener('click', (event) => {
+        for (const enemy of allEnemies) {
+            const speedImpossible = [200, 350, 450];
+            enemy.speed = randomSpeedGenerator(speedImpossible);
+        }
+    });
+}
 
 
 
 // GLOBAL VARIABLES
 const allEnemies = [];
-const speeds = [
-    [50, 80, 150],
-    [100, 150, 250],
-    [200, 350, 450]
-]; // different values for speed, that enemies can use
+let speeds = [50, 80, 150];
 let victoryNumber = 0;
-let livesNumber=3;
-let randomSpeedGenerator = (array) => { // a function that generates random speeds 
-    const randomNumber = Math.floor((Math.random() * array.length) + 1);
-    return array[randomNumber - 1];
-};
+let livesNumber = 3;
 
 //Instantiate Objects.
 const player = new Player();
-const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds[0]));
-const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds[0]));
-const enemy3 = new Enemy(0, 220, randomSpeedGenerator(speeds[0]));
-const enemy4 = new Enemy(0, 485, randomSpeedGenerator(speeds[0]));
-const enemy5 = new Enemy(0, 390, randomSpeedGenerator(speeds[0]));
-const enemy6 = new Enemy(0, 316, randomSpeedGenerator(speeds[0]));
+const enemy1 = new Enemy(0, 60, randomSpeedGenerator(speeds));
+const enemy2 = new Enemy(0, 140, randomSpeedGenerator(speeds));
+const enemy3 = new Enemy(0, 220, randomSpeedGenerator(speeds));
+const enemy4 = new Enemy(0, 485, randomSpeedGenerator(speeds));
+const enemy5 = new Enemy(0, 390, randomSpeedGenerator(speeds));
+const enemy6 = new Enemy(0, 316, randomSpeedGenerator(speeds));
 allEnemies.push(enemy1, enemy2, enemy3, enemy4, enemy5, enemy6);
 
-
+selectHero();
+difficultyLevel();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-selectHero();
-player.handleInputForMobile();
 document.addEventListener('keyup', (e) => {
     //    console.log(e);
     var allowedKeys = {
@@ -315,5 +356,6 @@ document.addEventListener('keyup', (e) => {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-
 });
+
+player.handleInputForMobile();
